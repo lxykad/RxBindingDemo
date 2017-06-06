@@ -57,6 +57,15 @@
             android:layout_height="wrap_content"
             android:text="检查权限" />
 
+        <Button
+            android:id="@+id/bt_cutdown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:onClick="clickTimer"
+            android:text="timer" />
+
+
     </LinearLayout>
 
 </layout>
