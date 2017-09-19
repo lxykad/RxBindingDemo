@@ -56,8 +56,7 @@
         android:layout_height="wrap_content"
         android:text="tab1"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/tab2" />
+        app:layout_constraintLeft_toLeftOf="parent" />
 
     <Button
         android:id="@+id/tab2"
@@ -74,7 +73,6 @@
         android:layout_height="wrap_content"
         android:text="tab3"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/tab2"
         app:layout_constraintRight_toRightOf="parent" />
 
     <Button
