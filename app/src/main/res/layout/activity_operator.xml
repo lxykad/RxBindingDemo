@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.lxy.binding.OperatorActivity">
+
+    <Button
+        android:id="@+id/zip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="zip" />
+
+    <Button
+        android:id="@+id/flatMap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="flatMap"
+        app:layout_constraintLeft_toRightOf="@+id/zip"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/map"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="map"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/zip" />
+
+    <Button
+        android:id="@+id/a"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="a"
+        app:layout_constraintLeft_toRightOf="@+id/map"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/map" />
+
+    <Button
+        android:id="@+id/b"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="16:9"
+        app:layout_constraintDimensionRatio="H,16:9"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/map" />
+
+    <!--app:layout_constraintHorizontal_weight 此属性可以指定每个tab的权重-->
+    <!--layout_constraintHorizontal_chainStyle 也可以通过此属性设置链头的一些属性-->
+    <Button
+        android:id="@+id/tab1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="tab1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/tab2" />
+
+    <Button
+        android:id="@+id/tab2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="tab2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/tab1"
+        app:layout_constraintRight_toLeftOf="@+id/tab3" />
+
+    <Button
+        android:id="@+id/tab3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="tab3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/tab2"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <Button
+        android:id="@+id/float_bt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="float"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.9" />
+
+</android.support.constraint.ConstraintLayout>

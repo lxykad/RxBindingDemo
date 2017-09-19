@@ -13,7 +13,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
+    // 常见用法
     public void click1(View view) {
         startActivity(new Intent(this, DoubleClickActivity.class));
+    }
+    //操作符
+    public void clickOperator(View view){
+        startActivity(new Intent(this, OperatorActivity.class));
     }
 }
