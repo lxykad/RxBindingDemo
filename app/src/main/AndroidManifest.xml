@@ -3,7 +3,7 @@
     package="com.lxy.binding">
 
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -20,7 +20,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".DoubleClickActivity" />
-        <activity android:name=".OperatorActivity"></activity>
+        <activity android:name=".OperatorActivity" />
+        <activity android:name=".NewActivity"></activity>
     </application>
 
 </manifest>

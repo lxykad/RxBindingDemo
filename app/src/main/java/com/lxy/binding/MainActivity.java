@@ -17,8 +17,13 @@ public class MainActivity extends AppCompatActivity {
     public void click1(View view) {
         startActivity(new Intent(this, DoubleClickActivity.class));
     }
+
     //操作符
-    public void clickOperator(View view){
+    public void clickOperator(View view) {
         startActivity(new Intent(this, OperatorActivity.class));
+    }
+
+    public void clickNew(View view) {
+
     }
 }
