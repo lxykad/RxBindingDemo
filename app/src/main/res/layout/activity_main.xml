@@ -7,24 +7,30 @@
     tools:context="com.lxy.binding.MainActivity">
 
     <Button
-        android:padding="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="click1"
+        android:padding="20dp"
         android:text="常用操作" />
 
     <Button
-        android:padding="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="clickOperator"
+        android:padding="20dp"
         android:text="操作符" />
 
     <Button
-        android:padding="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="clickNew"
-        android:text="new" />
+        android:padding="20dp"
+        android:text="rx高级" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="clickAnimation"
+        android:text="annimation" />
 
 </LinearLayout>

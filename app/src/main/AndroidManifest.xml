@@ -21,7 +21,8 @@
         </activity>
         <activity android:name=".DoubleClickActivity" />
         <activity android:name=".OperatorActivity" />
-        <activity android:name=".NewActivity"></activity>
+        <activity android:name=".RxActivity" />
+        <activity android:name=".annimation.AnimatorActivity"></activity>
     </application>
 
 </manifest>

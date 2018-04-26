@@ -5,6 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.lxy.binding.annimation.AnimatorActivity;
+
+/**
+ * @author a
+ */
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -23,7 +28,16 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(this, OperatorActivity.class));
     }
 
+    /**
+     * rx高级进阶
+     *
+     * @param view
+     */
     public void clickNew(View view) {
+        startActivity(new Intent(view.getContext(), RxActivity.class));
+    }
 
+    public void clickAnimation(View view) {
+        startActivity(new Intent(view.getContext(), AnimatorActivity.class));
     }
 }

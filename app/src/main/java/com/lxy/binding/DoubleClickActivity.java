@@ -48,6 +48,7 @@ public class DoubleClickActivity extends AppCompatActivity {
     private Disposable mIntervalDisposable;
     private int count;//轮询次数
     private int mRetryCount = 0;
+    private Subscription mSubscription; // 背压的subscription
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -182,7 +183,7 @@ public class DoubleClickActivity extends AppCompatActivity {
                     @Override
                     public void onNext(Long value) {
                         System.out.println("binding=======输出日志:" + value);
-                        if (value == 5l) {
+                        if (value == 5L) {
                             System.out.println("binding=======dispose");
                             mDisposable.dispose();
                         }
@@ -418,23 +419,53 @@ public class DoubleClickActivity extends AppCompatActivity {
         /**
          * 背压 Flowable g观察者使用
          * 解决发送和订阅事件 流速不一致的问题
+         *
+         * 注意：同步订阅中，被观察者 & 观察者工作于同1线程，同步订阅关系中没有缓存区。
+         * 被观察者在发送1个事件后，必须等待观察者接收后，才能继续发下1个事件.若Subscription.request没有设置，
+         * 观察者接收不到事件，会抛出MissingBackpressureException异常。
          */
         Flowable.create(new FlowableOnSubscribe<Integer>() {
             @Override
             public void subscribe(FlowableEmitter<Integer> e) throws Exception {
+
+                /**
+                 * 同步订阅：
+                 * 同步订阅的情况下，调用e.requested()方法，获取当前观察者需要接收的事件数量.
+                 * 根据当前观察者需要接收的事件数量来发送事件
+                 *
+                 * 异步订阅：
+                 * 由于二者处于不同线程，所以被观察者 无法通过 FlowableEmitter.requested()知道观察者自身接收事件能力。
+                 * 异步的反向控制：
+                 */
+                long count = e.requested();
+                System.out.println("flowable======需要接收的事件数量=" + count);
+
                 e.onNext(1);
                 e.onNext(2);
                 e.onNext(3);
+                e.onNext(4);
+                e.onNext(5);
+                e.onComplete();
             }
         }, BackpressureStrategy.ERROR)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<Integer>() {
                     @Override
                     public void onSubscribe(Subscription s) {
 
+                        // 作用：决定观察者能够接收多少个事件,多出的事件放入缓存区.若不设置，则不接收事件.
+                        // 不过被观察者仍然在发送事件（存放在缓存区，大小为128），等观察者需要时 再取出被观察者事件（比如点击事件里）.
+                        // 但是 当缓存区满时  就会溢出报错
+                        // 官方默认推荐使用Long.MAX_VALUE，即s.request(Long.MAX_VALUE);
+                        mSubscription = s;
+                        s.request(2);
+                        // s.request(1); // 同步订阅 观察者连续要求接收事件的话，被观察者e.requested() 返回3
                     }
 
                     @Override
                     public void onNext(Integer integer) {
+
                         System.out.println("flowable=======" + integer);
                     }
 
