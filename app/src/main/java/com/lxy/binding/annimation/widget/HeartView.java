@@ -85,7 +85,7 @@ public class HeartView extends View {
         // 画左右两个圆圈
         canvas.drawCircle(RIGHT_CONTROL_POINT[0], RIGHT_CONTROL_POINT[1], 5, mPaint);
         canvas.drawCircle(LEFT_CONTROL_POINT[0], LEFT_CONTROL_POINT[1], 5, mPaint);
-        // 移动圆环的初始位置
+        // 移动圆环的位置
         canvas.drawCircle(mCurrentPosition[0], mCurrentPosition[1], 10, mPaint);
     }
 
@@ -107,7 +107,6 @@ public class HeartView extends View {
             @Override
             public void onAnimationUpdate(ValueAnimator valueAnimator) {
                 float distance = (float) valueAnimator.getAnimatedValue();
-                System.out.println("dis=====" + distance);
 
                 mPathMeasure.getPosTan(distance, mCurrentPosition, null);
                 postInvalidate();

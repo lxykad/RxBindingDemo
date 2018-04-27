@@ -6,7 +6,7 @@
     android:orientation="vertical"
     tools:context=".annimation.AnimatorActivity">
 
-    <com.lxy.binding.annimation.widget.MovePathView
+    <com.lxy.binding.annimation.widget.PathView
         android:id="@+id/move_path_view"
         android:layout_width="match_parent"
         android:layout_height="300dp" />
